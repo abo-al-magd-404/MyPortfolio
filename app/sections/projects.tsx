@@ -23,7 +23,7 @@ const PROJECTS = [
     image: "/projects/portfolio.png",
     technologies: ["Next.js", "Framer Motion", "Tailwind"],
     live: "#",
-    github: "#",
+    github: "https://github.com/abo-al-magd-404/MyPortfolio",
   },
   // Add more projects here for testing
 ];
