@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-  ],
+, "app/sections/education.jsx", "app/sections/skills.jsx", "app/sections/contact.jsx"  ],
   "exclude": ["node_modules"]
 }
