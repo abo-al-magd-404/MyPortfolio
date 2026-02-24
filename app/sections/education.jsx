@@ -64,7 +64,7 @@ const CERTIFICATES = [
   {
     id: 2,
     name: "Top Performer",
-    file: "/MyCertificates/python-cert.jpeg",
+    file: "/MyCertificates/top-performer.png",
     issuer: "Route Academy",
   },
 ];
