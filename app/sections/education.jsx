@@ -61,6 +61,12 @@ const CERTIFICATES = [
     file: "/MyCertificates/python-cert.jpeg",
     issuer: "University",
   },
+  {
+    id: 2,
+    name: "Top Performer",
+    file: "/MyCertificates/python-cert.jpeg",
+    issuer: "Route Academy",
+  },
 ];
 
 // ====================
