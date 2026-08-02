@@ -1,129 +1,158 @@
-# Mohamed Mahmoud Abo Al Magd – Portfolio
+# Abo Al Magd — Personal Portfolio
 
-A modern, interactive portfolio website to showcase the projects, technical skills, and academic background of **Mohamed Mahmoud Abo Al Magd** – a passionate Full-Stack (MERN) Developer dedicated to building scalable, performant, and visually engaging digital experiences.
-
----
-
-## 🚀 Project Overview
-
-This website offers a clean and approachable way to browse Mohamed’s work and background, featuring animated transitions, responsive layouts, and a contact form with backend email functionality. It’s designed and engineered for optimal UX, maintainable code, and fast performance.
+A production-ready, responsive portfolio website for Mohamed Mahmoud Abo Al Magd (abo-al-magd-404) built with the Next.js App Router. It showcases projects, technical skills, education, and includes a working contact form (serverless API + Nodemailer).
 
 ---
 
-## ✨ Features
+## Key highlights
 
-- **Sleek Landing Page:** Professionally branded with animated personal introduction.
-- **Skills Section:** Interactive breakdown of technical skills by stack (Frontend, Backend, Databases, Languages, Tools).
-- **Projects Gallery:** Visually engaging cards for featured projects, with demo and GitHub links.
-- **Education Timeline:** Timeline-style view of academic progress, supporting certificate downloads.
-- **Contact Form:** Functional contact form seamlessly integrated with serverless email sending (Nodemailer + Gmail).
-- **Dark Mode & Theming:** Modern aesthetic using Tailwind CSS and custom animated backgrounds.
-- **Mobile Responsive:** Thoughtful design and layouts for all device sizes.
-- **Micro Animations:** Powered by Framer Motion for a delightful but non-distracting experience.
-- **404 Page:** Custom design with actionable navigation.
-- **SEO & Metadata:** Meta tags for title/description and friendly social sharing.
+- Clean, responsive single-page composition: Landing → Education → Skills → Projects → Contact.
+- Interactive UI with Framer Motion micro-animations and Tailwind CSS theming.
+- Serverless contact endpoint using Nodemailer + Gmail environment credentials.
+- Built with Next.js App Router (Next 16) and React 19, fully typed with TypeScript.
 
 ---
 
-## 🛠️ Tech Stack
+## Features
 
-**Framework & Core:**  
-- [Next.js 16 (App Router)](https://nextjs.org/)  
-- [React 19](https://react.dev/)  
-- [TypeScript](https://www.typescriptlang.org/)
-
-**UI & Styling:**  
-- [Tailwind CSS 4](https://tailwindcss.com/)  
-- [Framer Motion](https://www.framer.com/motion/)  
-- [FontAwesome React](https://fontawesome.com/v6/docs/web/use-with/react/)  
-- [Tomorrow Google Fonts](https://fonts.google.com/specimen/Tomorrow)
-
-**Backend & APIs:**  
-- [Nodemailer](https://nodemailer.com/) (for contact form/serverless email)  
-- [Node.js](https://nodejs.org/) (API routes used by Next.js App Router)
-
-**Tooling:**  
-- [ESLint](https://eslint.org/) (Next.js config)  
-- [PostCSS](https://postcss.org/)  
-- [Vercel (Deployment)](https://vercel.com/) (recommended)
+- Branded landing section with animated intro and Google Tomorrow font.
+- Education timeline with certificate/download support.
+- Skills breakdown by stack (frontend, backend, databases, tools).
+- Projects gallery/cards with demo and GitHub links.
+- Functional contact form backed by a serverless API route (sends email to the configured Gmail account).
+- Dark theme, responsive layout, and subtle animated background elements.
+- Custom 404 page and SEO-friendly metadata (title & description in layout).
 
 ---
 
-## 🏗️ Architecture
+## Stack
 
-- **Monorepo Type:** Single Next.js App Router project (src: `/app/`)
-- **Core Sections:**  
-  - `/sections/landing` – Intro  
-  - `/sections/skills` – Skill matrices  
-  - `/sections/projects` – Projects carousel  
-  - `/sections/education` – Education & certifications  
-  - `/sections/contact` – Form and info  
-- **API:**  
-  - `/api/contact/route.js` – Serverless API route, securely processes contact form (using Gmail + environment variables).
-- **UI Composition:**  
-  - `/components/navbar` and `/components/footer` – Reusable and themed
-  - Custom animated backgrounds and responsive containers.  
-- **Global Styling:**  
-  - `/app/globals.css` (Tailwind, color themes, and keyframes)
+- Language(s): TypeScript, JavaScript, JSX/TSX
+- Framework / runtime: Next.js 16 (App Router), React 19
+- Notable libraries:
+  - Tailwind CSS 4 (utility-first styling)
+  - Framer Motion (animations)
+  - Nodemailer (contact email)
+  - @fortawesome/react-fontawesome (icons)
 
 ---
 
-## ⚡️ Setup & Usage
-
-1. **Clone & Install**  
-   ```sh
-   git clone https://github.com/abo-al-magd-404/MyPortfolio.git
-   cd MyPortfolio
-   npm install
-   ```
-
-2. **Environment Variables**  
-   Create a `.env.local` file with:
-   ```
-   EMAIL_USER=your_gmail_address@gmail.com
-   EMAIL_PASS=your_gmail_app_password
-   ```
-
-3. **Run Locally**  
-   ```sh
-   npm run dev
-   # Open http://localhost:3000
-   ```
-
-4. **Build for Production**  
-   ```sh
-   npm run build
-   npm run start
-   ```
-
-5. **Deploy**  
-   Deploy seamlessly to [Vercel](https://vercel.com/) or any platform supporting Next.js 16.
-
----
-
-## 📂 Folder Structure
+## Repository layout
 
 ```txt
 /app
-  /sections      # Landing, Skills, Projects, Education, Contact
-  /components    # Navbar, Footer, shared UI
-  /api/contact   # API route for contact form (uses Nodemailer)
-  globals.css    # Tailwind config, base style, keyframes
-  layout.tsx     # App-wide layout (animated backgrounds, metadata)
-  page.tsx       # Main composition (brings all sections together)
+  layout.tsx            # Root layout: metadata, Tomorrow font, animated backgrounds, Navbar/Footer
+  globals.css           # Tailwind import, variables, animated background CSS
+  page.tsx              # Composes Landing, Education, Skills, Projects, Contact sections
+  /sections/
+    landing.tsx
+    education.tsx
+    skills.tsx
+    projects.tsx
+    contact.tsx
+  /components/
+    navbar.tsx
+    footer.tsx
+  /api/
+    contact/route.js    # POST endpoint that sends emails via Nodemailer + Gmail
 public/
-  /images        # Profile photo and assets
-  cv.pdf         # Downloadable CV
-next.config.ts   # Next.js configuration
+  images/               # Profile photo & assets
+  cv.pdf                # Downloadable CV
+package.json            # scripts & dependency versions
+next.config.ts
+tsconfig.json
 postcss.config.mjs
-tailwind.config.js
-package.json
+```
+
+How it fits together:
+- The app uses the Next.js App Router: `app/layout.tsx` sets global UI and metadata, `app/page.tsx` mounts the major sections. UI sections live under `app/sections`. The contact form posts to `app/api/contact/route.js`, which constructs and sends an email using Nodemailer and environment variables.
+
+---
+
+## Getting started (local)
+
+1. Clone and install
+```bash
+git clone https://github.com/abo-al-magd-404/MyPortfolio.git
+cd MyPortfolio
+npm install
+```
+
+2. Environment variables
+Create a `.env.local` file at project root containing:
+```
+EMAIL_USER=your_gmail_address@gmail.com
+EMAIL_PASS=your_gmail_app_password
+```
+Notes:
+- The API route at `app/api/contact/route.js` uses `process.env.EMAIL_USER` and `process.env.EMAIL_PASS`.
+- For Gmail, use an app password or follow Gmail’s current security guidance (OAuth2 or app password as appropriate).
+
+3. Run locally
+```bash
+npm run dev
+# Open http://localhost:3000
+```
+
+4. Build & run production
+```bash
+npm run build
+npm run start
+```
+
+5. Lint
+```bash
+npm run lint
 ```
 
 ---
 
-## 📣 Contact
+## Contact API details
 
-- **Email:** abo.al.magd.404@gmail.com
-- **WhatsApp:** [+20 109 555 4022](https://wa.me/201095554022)
-- **GitHub:** [abo-al-magd-404](https://github.com/abo-al-magd-404)
+- Endpoint: POST /api/contact
+- Implementation: `app/api/contact/route.js`
+- Expected JSON body:
+```json
+{
+  "name": "Sender Name",
+  "email": "sender@example.com",
+  "message": "Message body"
+}
+```
+- Response:
+  - 200: { message: "Message sent successfully" }
+  - 400: { message: "All fields are required" }
+  - 500: { message: "Something went wrong" }
+
+Security reminder: Do not commit `.env.local`. Protect `EMAIL_PASS`; prefer secrets management on production (Vercel/Netlify environment variables or a secure email relay).
+
+---
+
+## Deployment
+
+- Recommended: Vercel (first-class Next.js support). Set the environment variables (EMAIL_USER, EMAIL_PASS) in the project settings on Vercel.
+- Any Node-compatible host that supports Next.js App Router can run the site.
+
+---
+
+## Development notes & conventions
+
+- Font: Google Tomorrow via `next/font/google` in `app/layout.tsx` (variable `--font-tomorrow`).
+- Global styles and animated background circles are in `app/globals.css`.
+- The site uses Tailwind utility classes; Tailwind PostCSS plugin is configured in `postcss.config.mjs`.
+- Serverless contact logic uses `nodemailer.createTransport({ service: "gmail", auth: { user, pass } })` — see `app/api/contact/route.js`.
+
+---
+
+## Author & contacts
+
+- Email: abo.al.magd.404@gmail.com
+- WhatsApp: +20 109 555 4022 — https://wa.me/201095554022
+- GitHub: https://github.com/abo-al-magd-404
+
+---
+
+If you want, I can:
+- Add usage examples for the contact API (curl / fetch).
+- Create a CONTRIBUTING.md or update CI/formatting workflows.
+- Adjust README wording for a public portfolio homepage vs. developer-centric README.
